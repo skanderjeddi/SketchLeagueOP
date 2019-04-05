@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public final class SketchLeagueOP {
 	public static final String[] CHAMPIONS = { "Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe", "Aurelion Sol", "Azir", //
@@ -69,27 +70,64 @@ public final class SketchLeagueOP {
 		SketchLeagueOP.mappings.put('&', KeyEvent.VK_1);
 	}
 
-	public static final int DELAY = 40;
+	public static final int DELAY = 30;
 
 	private Robot robot;
+	private Random random;
 
 	public SketchLeagueOP() throws AWTException {
 		this.robot = new Robot();
+		this.random = new Random();
 	}
 
-	public final void tryAllChampions() {
-		this.robot.delay(4000);
-		for (String champion : SketchLeagueOP.CHAMPIONS) {
-			this.type(champion);
-			this.pressEnter();
+	public final void tryAllChampions(boolean randomize) {
+		if (randomize) {
+			String[] randomizedArray = this.randomize(SketchLeagueOP.CHAMPIONS);
+			this.robot.delay(4000);
+			for (String champion : randomizedArray) {
+				this.type(champion);
+				this.pressEnter();
+			}
+		} else {
+			this.robot.delay(4000);
+			for (String champion : SketchLeagueOP.CHAMPIONS) {
+				this.type(champion);
+				this.pressEnter();
+			}
 		}
 	}
 
-	public static void main(String[] args) {
-		try {
-			new SketchLeagueOP().tryAllChampions();
-		} catch (AWTException awtException) {
-			awtException.printStackTrace();
+	private String[] randomize(String[] baseArray) {
+		String[] finalArray = new String[baseArray.length];
+		for (int index = 0; index < finalArray.length; index += 1) {
+			finalArray[index] = new String();
+		}
+		for (int index = 0; index < finalArray.length; index += 1) {
+			String pick = this.pick(baseArray, finalArray, index == (finalArray.length - 1));
+			finalArray[index] = pick;
+		}
+		return finalArray;
+	}
+
+	private boolean arrayContains(String[] array, String object) {
+		for (int index = 0; index < array.length; index += 1) {
+			if (array[index].equals(object)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public String pick(String[] baseArray, String[] finalArray, boolean last) {
+		String randomString = baseArray[this.random.nextInt(baseArray.length)];
+		boolean contains = this.arrayContains(finalArray, randomString);
+		if (contains) {
+			if (last) {
+				return randomString;
+			}
+			return this.pick(baseArray, finalArray, last);
+		} else {
+			return randomString;
 		}
 	}
 
@@ -129,5 +167,13 @@ public final class SketchLeagueOP {
 	private final void disableCaps() {
 		this.robot.delay(SketchLeagueOP.DELAY);
 		this.robot.keyRelease(KeyEvent.VK_SHIFT);
+	}
+
+	public static void main(String[] args) {
+		try {
+			new SketchLeagueOP().tryAllChampions(true);
+		} catch (AWTException awtException) {
+			awtException.printStackTrace();
+		}
 	}
 }
