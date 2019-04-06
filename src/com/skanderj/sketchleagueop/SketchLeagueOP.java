@@ -8,7 +8,9 @@ import java.util.Map;
 import java.util.Random;
 
 public final class SketchLeagueOP {
-	public static final String[] CHAMPIONS = { "Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe", "Aurelion Sol", "Azir", //
+    
+	public static final String[] CHAMPIONS = { //
+            "Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe", "Aurelion Sol", "Azir", //
 			"Bard", "Blitzcrank", "Brand", "Braum", //
 			"Caitlyn", "Camille", "Cassiopeia", "Cho'Gath", "Corki", //
 			"Darius", "Diana", "Dr. Mundo", "Draven", //
@@ -33,51 +35,52 @@ public final class SketchLeagueOP {
 			"Warwick", "Wukong", //
 			"Xayah", "Xerath", "Xin Zhao", //
 			"Yasuo", "Yorick", //
-			"Zac", "Zed", "Ziggs", "Zilean", "Zoe", "Zyra" };
+			"Zac", "Zed", "Ziggs", "Zilean", "Zoe", "Zyra" //
+    };
 
-	public static final String OPERATING_SYSTEM = System.getProperty("os.name").toLowerCase();
+	public static final boolean ON_MAC = System.getProperty("os.name").toLowerCase().contains("mac");
 
-	public static final Map<Character, Integer> mappings = new HashMap<Character, Integer>();
+	public static final Map<Character, Integer> keyboardMappings = new HashMap<Character, Integer>();
 	static {
-		SketchLeagueOP.mappings.put('a', KeyEvent.VK_A);
-		SketchLeagueOP.mappings.put('b', KeyEvent.VK_B);
-		SketchLeagueOP.mappings.put('c', KeyEvent.VK_C);
-		SketchLeagueOP.mappings.put('d', KeyEvent.VK_D);
-		SketchLeagueOP.mappings.put('e', KeyEvent.VK_E);
-		SketchLeagueOP.mappings.put('f', KeyEvent.VK_F);
-		SketchLeagueOP.mappings.put('g', KeyEvent.VK_G);
-		SketchLeagueOP.mappings.put('h', KeyEvent.VK_H);
-		SketchLeagueOP.mappings.put('i', KeyEvent.VK_I);
-		SketchLeagueOP.mappings.put('j', KeyEvent.VK_J);
-		SketchLeagueOP.mappings.put('k', KeyEvent.VK_K);
-		SketchLeagueOP.mappings.put('l', KeyEvent.VK_L);
-		SketchLeagueOP.mappings.put('m', KeyEvent.VK_M);
-		SketchLeagueOP.mappings.put('n', KeyEvent.VK_N);
-		SketchLeagueOP.mappings.put('o', KeyEvent.VK_O);
-		SketchLeagueOP.mappings.put('p', KeyEvent.VK_P);
-		SketchLeagueOP.mappings.put('q', KeyEvent.VK_Q);
-		SketchLeagueOP.mappings.put('r', KeyEvent.VK_R);
-		SketchLeagueOP.mappings.put('s', KeyEvent.VK_S);
-		SketchLeagueOP.mappings.put('t', KeyEvent.VK_T);
-		SketchLeagueOP.mappings.put('u', KeyEvent.VK_U);
-		SketchLeagueOP.mappings.put('v', KeyEvent.VK_V);
-		SketchLeagueOP.mappings.put('w', KeyEvent.VK_W);
-		SketchLeagueOP.mappings.put('x', KeyEvent.VK_X);
-		SketchLeagueOP.mappings.put('y', KeyEvent.VK_Y);
-		SketchLeagueOP.mappings.put('z', KeyEvent.VK_Z);
-		SketchLeagueOP.mappings.put(' ', KeyEvent.VK_SPACE);
-		SketchLeagueOP.mappings.put('\'', KeyEvent.VK_4);
-		SketchLeagueOP.mappings.put('.', KeyEvent.VK_SEMICOLON);
-		SketchLeagueOP.mappings.put('&', KeyEvent.VK_1);
-		if (SketchLeagueOP.OPERATING_SYSTEM.contains("mac")) {
-			SketchLeagueOP.mappings.put('a', KeyEvent.VK_Q);
-			SketchLeagueOP.mappings.put('q', KeyEvent.VK_A);
-			SketchLeagueOP.mappings.put('w', KeyEvent.VK_Z);
-			SketchLeagueOP.mappings.put('z', KeyEvent.VK_W);
-			SketchLeagueOP.mappings.put('a', KeyEvent.VK_Q);
-			SketchLeagueOP.mappings.put('a', KeyEvent.VK_Q);
-			SketchLeagueOP.mappings.put('m', KeyEvent.VK_SEMICOLON);
-			SketchLeagueOP.mappings.put('.', KeyEvent.VK_M);
+		SketchLeagueOP.keyboardMappings.put('a', KeyEvent.VK_A);
+		SketchLeagueOP.keyboardMappings.put('b', KeyEvent.VK_B);
+		SketchLeagueOP.keyboardMappings.put('c', KeyEvent.VK_C);
+		SketchLeagueOP.keyboardMappings.put('d', KeyEvent.VK_D);
+		SketchLeagueOP.keyboardMappings.put('e', KeyEvent.VK_E);
+		SketchLeagueOP.keyboardMappings.put('f', KeyEvent.VK_F);
+		SketchLeagueOP.keyboardMappings.put('g', KeyEvent.VK_G);
+		SketchLeagueOP.keyboardMappings.put('h', KeyEvent.VK_H);
+		SketchLeagueOP.keyboardMappings.put('i', KeyEvent.VK_I);
+		SketchLeagueOP.keyboardMappings.put('j', KeyEvent.VK_J);
+		SketchLeagueOP.keyboardMappings.put('k', KeyEvent.VK_K);
+		SketchLeagueOP.keyboardMappings.put('l', KeyEvent.VK_L);
+		SketchLeagueOP.keyboardMappings.put('m', KeyEvent.VK_M);
+		SketchLeagueOP.keyboardMappings.put('n', KeyEvent.VK_N);
+		SketchLeagueOP.keyboardMappings.put('o', KeyEvent.VK_O);
+		SketchLeagueOP.keyboardMappings.put('p', KeyEvent.VK_P);
+		SketchLeagueOP.keyboardMappings.put('q', KeyEvent.VK_Q);
+		SketchLeagueOP.keyboardMappings.put('r', KeyEvent.VK_R);
+		SketchLeagueOP.keyboardMappings.put('s', KeyEvent.VK_S);
+		SketchLeagueOP.keyboardMappings.put('t', KeyEvent.VK_T);
+		SketchLeagueOP.keyboardMappings.put('u', KeyEvent.VK_U);
+		SketchLeagueOP.keyboardMappings.put('v', KeyEvent.VK_V);
+		SketchLeagueOP.keyboardMappings.put('w', KeyEvent.VK_W);
+		SketchLeagueOP.keyboardMappings.put('x', KeyEvent.VK_X);
+		SketchLeagueOP.keyboardMappings.put('y', KeyEvent.VK_Y);
+		SketchLeagueOP.keyboardMappings.put('z', KeyEvent.VK_Z);
+		SketchLeagueOP.keyboardMappings.put(' ', KeyEvent.VK_SPACE);
+		SketchLeagueOP.keyboardMappings.put('\'', KeyEvent.VK_4);
+		SketchLeagueOP.keyboardMappings.put('.', KeyEvent.VK_SEMICOLON);
+		SketchLeagueOP.keyboardMappings.put('&', KeyEvent.VK_1);
+		if (SketchLeagueOP.ON_MAC) {
+			SketchLeagueOP.keyboardMappings.put('a', KeyEvent.VK_Q);
+			SketchLeagueOP.keyboardMappings.put('q', KeyEvent.VK_A);
+			SketchLeagueOP.keyboardMappings.put('w', KeyEvent.VK_Z);
+			SketchLeagueOP.keyboardMappings.put('z', KeyEvent.VK_W);
+			SketchLeagueOP.keyboardMappings.put('a', KeyEvent.VK_Q);
+			SketchLeagueOP.keyboardMappings.put('a', KeyEvent.VK_Q);
+			SketchLeagueOP.keyboardMappings.put('m', KeyEvent.VK_SEMICOLON);
+			SketchLeagueOP.keyboardMappings.put('.', KeyEvent.VK_M);
 		}
 	}
 
@@ -145,7 +148,7 @@ public final class SketchLeagueOP {
 	}
 
 	private final void type(char character) {
-		int code = SketchLeagueOP.mappings.get(character);
+		int code = SketchLeagueOP.keyboardMappings.get(character);
 		this.robot.delay(SketchLeagueOP.DELAY);
 		this.robot.keyPress(code);
 		this.robot.keyRelease(code);
@@ -158,8 +161,8 @@ public final class SketchLeagueOP {
 			if (isUppercase) {
 				this.enableCaps();
 			}
-			char c = part.toLowerCase().charAt(0);
-			this.type(c);
+			char character = part.toLowerCase().charAt(0);
+			this.type(character);
 			if (isUppercase) {
 				this.disableCaps();
 			}
