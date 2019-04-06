@@ -8,8 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 public final class SketchLeagueOP {
-	public static final String[] CHAMPIONS = { "Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe",
-			"Aurelion Sol", "Azir", //
+	public static final String[] CHAMPIONS = { "Aatrox", "Ahri", "Akali", "Alistar", "Amumu", "Anivia", "Annie", "Ashe", "Aurelion Sol", "Azir", //
 			"Bard", "Blitzcrank", "Brand", "Braum", //
 			"Caitlyn", "Camille", "Cassiopeia", "Cho'Gath", "Corki", //
 			"Darius", "Diana", "Dr. Mundo", "Draven", //
@@ -19,8 +18,7 @@ public final class SketchLeagueOP {
 			"Hecarim", "Heimerdinger", //
 			"Illaoi", "Irelia", "Ivern", //
 			"Janna", "Jarvan IV", "Jax", "Jayce", "Jhin", "Jinx", //
-			"Kai'Sa", "Kalista", "Karma", "Karthus", "Kassadin", "Katarina", "Kayle", "Kayn", "Kennen", "Kha'Zix",
-			"Kindred", "Kled", "Kog'Maw", //
+			"Kai'Sa", "Kalista", "Karma", "Karthus", "Kassadin", "Katarina", "Kayle", "Kayn", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw", //
 			"LeBlanc", "Lee Sin", "Leona", "Lissandra", "Lucian", "Lulu", "Lux", //
 			"Malphite", "Malzahar", "Maokai", "Master Yi", "Miss Fortune", "Mordekaiser", "Morgana", //
 			"Nami", "Nasus", "Nautilus", "Neeko", "Nidalee", "Nocturne", "Nunu & Willump", //
@@ -28,10 +26,8 @@ public final class SketchLeagueOP {
 			"Pantheon", "Poppy", "Pyke", //
 			"Quinn", //
 			"Rakan", "Rammus", "Rek'Sai", "Renekton", "Rengar", "Riven", "Rumble", "Ryze", //
-			"Sejuani", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir", "Skarner", "Sion", "Soraka", "Swain",
-			"Sylas", "Syndra", //
-			"Tahm Kench", "Taliyah", "Talon", "Taric", "Teemo", "Thresh", "Tristana", "Trundle", "Tryndamere",
-			"Twisted Fate", "Twitch", //
+			"Sejuani", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir", "Skarner", "Sion", "Soraka", "Swain", "Sylas", "Syndra", //
+			"Tahm Kench", "Taliyah", "Talon", "Taric", "Teemo", "Thresh", "Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch", //
 			"Udyr", "Urgot", //
 			"Varus", "Vayne", "Veigar", "Vel'Koz", "Vi", "Viktor", "Vladimir", "Volibear", //
 			"Warwick", "Wukong", //
@@ -39,7 +35,7 @@ public final class SketchLeagueOP {
 			"Yasuo", "Yorick", //
 			"Zac", "Zed", "Ziggs", "Zilean", "Zoe", "Zyra" };
 
-	public static final String operatingSystem = System.getProperty("os.name").toLowerCase();
+	public static final String OPERATING_SYSTEM = System.getProperty("os.name").toLowerCase();
 
 	public static final Map<Character, Integer> mappings = new HashMap<Character, Integer>();
 	static {
@@ -73,7 +69,7 @@ public final class SketchLeagueOP {
 		SketchLeagueOP.mappings.put('\'', KeyEvent.VK_4);
 		SketchLeagueOP.mappings.put('.', KeyEvent.VK_SEMICOLON);
 		SketchLeagueOP.mappings.put('&', KeyEvent.VK_1);
-		if (operatingSystem.contains("mac")) {
+		if (SketchLeagueOP.OPERATING_SYSTEM.contains("mac")) {
 			SketchLeagueOP.mappings.put('a', KeyEvent.VK_Q);
 			SketchLeagueOP.mappings.put('q', KeyEvent.VK_A);
 			SketchLeagueOP.mappings.put('w', KeyEvent.VK_Z);
@@ -158,8 +154,7 @@ public final class SketchLeagueOP {
 	private final void type(String string) {
 		String[] splits = string.split("(?!^)");
 		for (String part : splits) {
-			boolean isUppercase = (part.equals(part.toUpperCase()) || part.equals(".")) && !part.equals("\'")
-					&& !part.equals("&");
+			boolean isUppercase = (part.equals(part.toUpperCase()) || part.equals(".")) && !part.equals("\'") && !part.equals("&");
 			if (isUppercase) {
 				this.enableCaps();
 			}
