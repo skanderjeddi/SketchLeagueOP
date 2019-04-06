@@ -85,7 +85,7 @@ public final class SketchLeagueOP {
 		}
 	}
 
-	public static final int DELAY = 40;
+	public static final int DELAY = 5;
 
 	private Robot robot;
 	private Random random;
